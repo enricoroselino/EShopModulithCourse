@@ -8,3 +8,4 @@ riderModule.iml
 **/**.vs**
 **/**.DotSettings.user
 **/.env
+**/**.csproj.user
