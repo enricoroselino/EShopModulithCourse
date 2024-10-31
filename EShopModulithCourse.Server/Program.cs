@@ -10,8 +10,9 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddSerilogConfig();
 builder.Services
+    .AddCors()
     .AddProblemDetails()
-    .AddExceptionHandler<GlobalExceptionHandler>();;
+    .AddExceptionHandler<GlobalExceptionHandler>();
 
 var app = builder.Build();
 
@@ -21,6 +22,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app
+    .UseCors(policyBuilder => policyBuilder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader())
+    .UseExceptionHandler(cfg => { });
 
 app.UseHttpsRedirection();
 await app.RunAsync();
