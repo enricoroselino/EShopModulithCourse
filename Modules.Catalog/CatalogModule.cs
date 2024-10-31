@@ -1,6 +1,7 @@
 ﻿using EShopModulithCourse.Server.Shared.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
+using Modules.Catalog.Data;
 
 namespace Modules.Catalog;
 
@@ -11,6 +12,8 @@ public static class CatalogModule
         var assembly = typeof(CatalogModule).Assembly;
         services.AddMediatorFromAssemblies(assembly);
         services.AddCarterFromAssemblies(assembly);
+
+        services.AddDbContext<CatalogDbContext>();
         return services;
     }
 

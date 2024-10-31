@@ -1,10 +1,12 @@
 using Carter;
+using DotNetEnv;
 using EShopModulithCourse.Server.Configurations;
 using EShopModulithCourse.Server.Shared.Exceptions;
 using Modules.Basket;
 using Modules.Catalog;
 using Modules.Ordering;
 
+Env.Load(".env");
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
