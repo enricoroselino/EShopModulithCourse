@@ -1,3 +1,4 @@
+using Carter;
 using EShopModulithCourse.Server.Configurations;
 using EShopModulithCourse.Server.Shared.Exceptions;
 using Modules.Basket;
@@ -41,4 +42,5 @@ app
     .UseExceptionHandler(cfg => { });
 
 app.UseHttpsRedirection();
+app.MapCarter();
 await app.RunAsync();
