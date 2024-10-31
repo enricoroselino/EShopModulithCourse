@@ -1,4 +1,4 @@
-﻿namespace EShopModulithCourse.Server.Shared;
+﻿namespace EShopModulithCourse.Server.Shared.Providers;
 
 internal static class AssembliesProvider
 {

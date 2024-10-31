@@ -1,4 +1,6 @@
-﻿namespace EShopModulithCourse.Server.Shared.Extensions;
+﻿using EShopModulithCourse.Server.Shared.Providers;
+
+namespace EShopModulithCourse.Server.Shared.Extensions;
 
 public static class CarterExtensions
 {
