@@ -1,5 +1,8 @@
 using EShopModulithCourse.Server.Configurations;
 using EShopModulithCourse.Server.Shared.Exceptions;
+using Modules.Basket;
+using Modules.Catalog;
+using Modules.Ordering;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +17,11 @@ builder.Services
     .AddProblemDetails()
     .AddExceptionHandler<GlobalExceptionHandler>();
 
+builder.Services
+    .AddBasketModule()
+    .AddCatalogModule()
+    .AddOrderingModule();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -22,6 +30,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app
+    .UseBasketModule()
+    .UseCatalogModule()
+    .UseOrderingModule();
 
 app
     .UseCors(policyBuilder => policyBuilder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader())
