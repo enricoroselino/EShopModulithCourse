@@ -1,6 +1,4 @@
-﻿using System.Reflection;
-
-namespace EShopModulithCourse.Server.Shared.Extensions;
+﻿namespace EShopModulithCourse.Server.Shared.Extensions;
 
 public static class CarterExtensions
 {
