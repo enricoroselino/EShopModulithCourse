@@ -17,7 +17,8 @@ public static class CatalogModule
         services.AddCarterFromAssemblies(assembly);
 
         services.AddDbContext<CatalogDbContext>();
-        services.AddScoped<IDataSeeder, CatalogDataSeeder>();
+        
+        services.AddScoped<IDataSeeder, CatalogDummyDataSeeder>();
         return services;
     }
 
