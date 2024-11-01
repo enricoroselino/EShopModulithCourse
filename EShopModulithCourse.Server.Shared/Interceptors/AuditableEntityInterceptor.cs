@@ -32,14 +32,14 @@ public class AuditableEntityInterceptor : SaveChangesInterceptor
         entities.ForEach(x =>
         {
             if (x.State == EntityState.Added) x.Entity.CreatedAt = DateTime.Now;
-            
+
             if (x.State == EntityState.Added || x.State == EntityState.Modified || x.HasChangedOwnedEntities())
                 x.Entity.ModifiedAt = DateTime.Now;
         });
     }
 }
 
-public static class EntityExtensions
+internal static class EntityExtensions
 {
     public static bool HasChangedOwnedEntities(this EntityEntry entry) =>
         entry.References.Any(r =>
