@@ -5,8 +5,10 @@ using Modules.Catalog.Data.Seeders.Fakers;
 
 namespace Modules.Catalog.Data.Seeders;
 
-public class CatalogDataSeeder(CatalogDbContext catalogDbContext) : IDataSeeder
+public class CatalogDummyDataSeeder(CatalogDbContext catalogDbContext) : IDataSeeder
 {
+    public bool IsDummyData => true;
+
     public async Task SeedAsync()
     {
         await catalogDbContext.BeginTransaction(async () => { await AddProducts(10); });
@@ -14,7 +16,7 @@ public class CatalogDataSeeder(CatalogDbContext catalogDbContext) : IDataSeeder
 
     private async Task AddProducts(int count)
     {
-        if (!await catalogDbContext.Products.AnyAsync()) return;
+        if (await catalogDbContext.Products.AnyAsync()) return;
 
         var products = new ProductFaker().Generate(count);
         await catalogDbContext.Products.AddRangeAsync(products);

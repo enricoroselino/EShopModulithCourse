@@ -9,15 +9,28 @@ public static class DatabaseExtensions
     {
         using var scope = app.ApplicationServices.CreateScope();
         await using var context = scope.ServiceProvider.GetRequiredService<TDbContext>();
-        await context.Database.EnsureCreatedAsync();
         await context.Database.MigrateAsync();
     }
 
     public static async Task SeedDatabaseAsync(this IApplicationBuilder app)
     {
         using var scope = app.ApplicationServices.CreateScope();
-        var seeders = scope.ServiceProvider.GetServices<IDataSeeder>();
-        await Task.WhenAll(seeders.Select(x => x.SeedAsync()));
+        var seeders = scope.ServiceProvider
+            .GetServices<IDataSeeder>()
+            .ToList();
+
+        var primarySeeders = seeders
+            .Where(x => !x.IsDummyData)
+            .Select(x => x.SeedAsync());
+
+        var dummySeeders = seeders
+            .Where(x => x.IsDummyData)
+            .Select(x => x.SeedAsync());
+
+        // wait until primary data seeded
+        await Task.WhenAll(primarySeeders);
+        // then seed the dummy data
+        await Task.WhenAll(dummySeeders);
     }
 
     public static async Task<TResult> BeginTransaction<TResult>(this DbContext dbContext, Func<Task<TResult>> action)
