@@ -1,29 +1,23 @@
 ﻿using EShopModulithCourse.Server.Shared;
+using EShopModulithCourse.Server.Shared.Extensions;
 using Microsoft.EntityFrameworkCore;
 using Modules.Catalog.Data.Seeders.Fakers;
 
 namespace Modules.Catalog.Data.Seeders;
 
-public class CatalogDataSeeder : IDataSeeder
+public class CatalogDataSeeder(CatalogDbContext catalogDbContext) : IDataSeeder
 {
-    private readonly CatalogDbContext _catalogDbContext;
-
-    public CatalogDataSeeder(CatalogDbContext catalogDbContext)
-    {
-        _catalogDbContext = catalogDbContext;
-    }
-
     public async Task SeedAsync()
     {
-        await using var transaction = await _catalogDbContext.Database.BeginTransactionAsync();
+        await catalogDbContext.BeginTransaction(async () => { await AddProducts(10); });
+    }
 
-        if (!await _catalogDbContext.Products.AnyAsync())
-        {
-            var products = new ProductFaker().Generate(10);
-            await _catalogDbContext.Products.AddRangeAsync(products);
-            await _catalogDbContext.SaveChangesAsync();
-        }
+    private async Task AddProducts(int count)
+    {
+        if (!await catalogDbContext.Products.AnyAsync()) return;
 
-        await transaction.CommitAsync();
+        var products = new ProductFaker().Generate(count);
+        await catalogDbContext.Products.AddRangeAsync(products);
+        await catalogDbContext.SaveChangesAsync();
     }
 }
