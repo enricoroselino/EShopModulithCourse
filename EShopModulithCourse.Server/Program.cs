@@ -3,6 +3,7 @@ using DotNetEnv;
 using EShopModulithCourse.Server.Configurations;
 using EShopModulithCourse.Server.Shared.Exceptions;
 using EShopModulithCourse.Server.Shared.Extensions;
+using EShopModulithCourse.Server.Shared.Interceptors;
 using Modules.Basket;
 using Modules.Catalog;
 using Modules.Ordering;
@@ -25,6 +26,9 @@ builder.Services
     .AddBasketModule()
     .AddCatalogModule()
     .AddOrderingModule();
+
+builder.Services
+    .AddSingleton<AuditableEntityInterceptor>();
 
 var app = builder.Build();
 
