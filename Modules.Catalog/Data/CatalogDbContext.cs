@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.Extensions.Configuration;
-using Modules.Catalog.Products.Models;
+using Modules.Catalog.Features.Products.Models;
 
 namespace Modules.Catalog.Data;
 

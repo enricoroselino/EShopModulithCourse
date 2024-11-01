@@ -1,8 +1,7 @@
-﻿using EShopModulithCourse.Server.Shared;
-using EShopModulithCourse.Server.Shared.Providers;
-using Modules.Catalog.Products.Events;
+﻿using EShopModulithCourse.Server.Shared.Providers;
+using Modules.Catalog.Features.Products.Events;
 
-namespace Modules.Catalog.Products.Models;
+namespace Modules.Catalog.Features.Products.Models;
 
 public class Product : Aggregate<Guid>
 {

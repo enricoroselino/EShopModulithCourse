@@ -2,6 +2,7 @@ using Carter;
 using DotNetEnv;
 using EShopModulithCourse.Server.Configurations;
 using EShopModulithCourse.Server.Shared.Exceptions;
+using EShopModulithCourse.Server.Shared.Extensions;
 using Modules.Basket;
 using Modules.Catalog;
 using Modules.Ordering;
@@ -38,6 +39,8 @@ app
     .UseBasketModule()
     .UseCatalogModule()
     .UseOrderingModule();
+
+await app.SeedDatabaseAsync();
 
 app
     .UseCors(policyBuilder => policyBuilder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader())
