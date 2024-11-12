@@ -19,18 +19,8 @@ public static class DatabaseExtensions
             .GetServices<IDataSeeder>()
             .ToList();
 
-        var primarySeeders = seeders
-            .Where(x => !x.IsDummyData)
-            .Select(x => x.SeedAsync());
-
-        var dummySeeders = seeders
-            .Where(x => x.IsDummyData)
-            .Select(x => x.SeedAsync());
-
-        // wait until primary data seeded
-        await Task.WhenAll(primarySeeders);
-        // then seed the dummy data
-        await Task.WhenAll(dummySeeders);
+        var seeder = seeders.Select(x => x.SeedAsync());
+        await Task.WhenAll(seeder);
     }
 
     public static async Task<TResult> BeginTransaction<TResult>(this DbContext dbContext, Func<Task<TResult>> action)

@@ -1,5 +1,5 @@
 ﻿using Bogus;
-using Modules.Catalog.Features.Products.Models;
+using Modules.Catalog.Products.Models;
 
 namespace Modules.Catalog.Data.Seeders.Fakers;
 

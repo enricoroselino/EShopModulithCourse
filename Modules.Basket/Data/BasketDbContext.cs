@@ -1,35 +1,32 @@
 ﻿using System.Reflection;
-using EShopModulithCourse.Server.Shared.Interceptors;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.Extensions.Configuration;
-using Modules.Catalog.Products.Models;
+using Modules.Basket.Basket.Models;
 
-namespace Modules.Catalog.Data;
+namespace Modules.Basket.Data;
 
-public class CatalogDbContext : DbContext
+public class BasketDbContext : DbContext
 {
-    private const string Schema = "catalog";
+    private const string Schema = "basket";
     private readonly IConfiguration _configuration;
 
-    public CatalogDbContext(
-        DbContextOptions<CatalogDbContext> options,
+    public BasketDbContext(
+        DbContextOptions<BasketDbContext> options,
         IConfiguration configuration) : base(options)
     {
         _configuration = configuration;
     }
 
-    public DbSet<Product> Products { get; init; }
+    public DbSet<ShoppingCart> ShoppingCarts { get; init; }
+    public DbSet<ShoppingCartItem> ShoppingCartItems { get; init; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         var connectionString = _configuration.GetValue<string>("APP_DB_CONNECTION");
-        
-        optionsBuilder.UseSqlServer(connectionString, options =>
-        {
-            options.MigrationsHistoryTable(HistoryRepository.DefaultTableName, Schema);
-        });
+
+        optionsBuilder.UseSqlServer(connectionString,
+            options => { options.MigrationsHistoryTable(HistoryRepository.DefaultTableName, Schema); });
         base.OnConfiguring(optionsBuilder);
     }
 

@@ -1,7 +1,7 @@
 ﻿using EShopModulithCourse.Server.Shared;
 using EShopModulithCourse.Server.Shared.Extensions;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.DependencyInjection;
 using Modules.Catalog.Data;
 using Modules.Catalog.Data.Seeders;
@@ -16,9 +16,13 @@ public static class CatalogModule
         services.AddMediatorFromAssemblies(assembly);
         services.AddCarterFromAssemblies(assembly);
 
-        services.AddDbContext<CatalogDbContext>();
-        
-        services.AddScoped<IDataSeeder, CatalogDummyDataSeeder>();
+        services.AddDbContext<CatalogDbContext>((sp, options) =>
+        {
+            var interceptors = sp.GetServices<ISaveChangesInterceptor>();
+            options.AddInterceptors(interceptors);
+        });
+
+        services.AddScoped<IDataSeeder, CatalogSeeder>();
         return services;
     }
 

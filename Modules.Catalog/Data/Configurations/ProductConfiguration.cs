@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Modules.Catalog.Features.Products.Models;
+using Modules.Catalog.Products.Models;
 
 namespace Modules.Catalog.Data.Configurations;
 

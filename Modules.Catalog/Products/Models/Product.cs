@@ -1,7 +1,7 @@
 ﻿using EShopModulithCourse.Server.Shared.Providers;
-using Modules.Catalog.Features.Products.Events;
+using Modules.Catalog.Products.Events;
 
-namespace Modules.Catalog.Features.Products.Models;
+namespace Modules.Catalog.Products.Models;
 
 public class Product : Aggregate<Guid>
 {
@@ -21,7 +21,7 @@ public class Product : Aggregate<Guid>
         ArgumentException.ThrowIfNullOrWhiteSpace(name);
         ArgumentOutOfRangeException.ThrowIfNegativeOrZero(price);
 
-        var product =  new Product
+        var product = new Product
         {
             Id = UuidProvider.NewSequential(),
             Name = name,
@@ -30,20 +30,17 @@ public class Product : Aggregate<Guid>
             Price = price,
             ImageUrl = imageUrl
         };
-        
+
         product.AddDomainEvent(new ProductCreatedEvent(product));
         return product;
     }
 
-    public void Update(string name, string description, List<string> categories, decimal price, string imageUrl)
+    public void Update(string name, decimal price)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(name);
         ArgumentOutOfRangeException.ThrowIfNegativeOrZero(price);
 
         Name = name;
-        Categories = categories;
-        Description = description;
-        ImageUrl = imageUrl;
 
         if (Price != price)
         {

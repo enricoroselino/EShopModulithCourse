@@ -4,6 +4,7 @@ using EShopModulithCourse.Server.Configurations;
 using EShopModulithCourse.Server.Shared.Exceptions;
 using EShopModulithCourse.Server.Shared.Extensions;
 using EShopModulithCourse.Server.Shared.Interceptors;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using Modules.Basket;
 using Modules.Catalog;
 using Modules.Ordering;
@@ -28,7 +29,8 @@ builder.Services
     .AddOrderingModule();
 
 builder.Services
-    .AddSingleton<AuditableEntityInterceptor>();
+    .AddScoped<ISaveChangesInterceptor, AuditableEntityInterceptor>()
+    .AddScoped<ISaveChangesInterceptor, DispatchDomainEventsInterceptor>();
 
 var app = builder.Build();
 

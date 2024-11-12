@@ -8,10 +8,16 @@
 
     <ItemGroup>
       <ProjectReference Include="..\EShopModulithCourse.Server.Shared\EShopModulithCourse.Server.Shared.csproj" />
+      <ProjectReference Include="..\Modules.Catalog.Contract\Modules.Catalog.Contract.csproj" />
     </ItemGroup>
 
     <ItemGroup>
         <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Basket\Features\CheckoutBasket\" />
+      <Folder Include="Basket\Features\RemoveItemFromBasket\" />
     </ItemGroup>
 
 </Project>

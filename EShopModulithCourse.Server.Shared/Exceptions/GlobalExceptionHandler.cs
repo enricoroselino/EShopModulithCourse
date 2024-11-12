@@ -79,9 +79,7 @@ public class GlobalExceptionHandler(ILogger<GlobalExceptionHandler> logger) : IE
             problemDetails.Extensions.Add("ValidationErrors", errorsDictionary);
         }
 
-        await httpContext.Response.WriteAsJsonAsync(problemDetails, cancellationToken: cancellationToken)
-            .ConfigureAwait(false);
-        ;
+        await httpContext.Response.WriteAsJsonAsync(problemDetails, cancellationToken).ConfigureAwait(false);
         return true;
     }
 }
