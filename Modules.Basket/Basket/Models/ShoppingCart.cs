@@ -39,7 +39,7 @@ public class ShoppingCart : Aggregate<Guid>
         }
         else
         {
-            var newItem = new ShoppingCartItem(Id, productId, quantity, color, price, productName);
+            var newItem = ShoppingCartItem.Create(Id, productId, quantity, color, price, productName);
             _items.Add(newItem);
         }
     }
