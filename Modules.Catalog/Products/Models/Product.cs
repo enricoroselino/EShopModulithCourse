@@ -1,5 +1,6 @@
-﻿using EShopModulithCourse.Server.Shared.Providers;
-using Modules.Catalog.Products.Events;
+﻿using Modules.Catalog.Products.Events;
+using Shared.Contracts.DDD;
+using Shared.Providers;
 
 namespace Modules.Catalog.Products.Models;
 

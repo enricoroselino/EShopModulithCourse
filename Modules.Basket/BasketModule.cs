@@ -1,8 +1,9 @@
-﻿using EShopModulithCourse.Server.Shared.Extensions;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.DependencyInjection;
 using Modules.Basket.Data;
+using Shared.Data;
+using Shared.Extensions;
 
 namespace Modules.Basket;
 

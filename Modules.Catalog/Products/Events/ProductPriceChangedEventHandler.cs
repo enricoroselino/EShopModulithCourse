@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.Extensions.Logging;
 using Modules.Catalog.Products.Models;
+using Shared.Contracts.DDD;
 
 namespace Modules.Catalog.Products.Events;
 

@@ -1,4 +1,4 @@
-﻿using EShopModulithCourse.Server.Shared.Exceptions;
+﻿using Shared.Exceptions;
 
 namespace Modules.Catalog.Products.Exceptions;
 

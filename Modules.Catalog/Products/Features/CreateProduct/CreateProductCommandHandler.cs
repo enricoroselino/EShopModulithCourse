@@ -1,8 +1,8 @@
-﻿using EShopModulithCourse.Server.Shared.CQRS;
-using FluentValidation;
+﻿using FluentValidation;
 using Modules.Catalog.Data;
 using Modules.Catalog.Products.Dtos;
 using Modules.Catalog.Products.Models;
+using Shared.Contracts.CQRS;
 
 namespace Modules.Catalog.Products.Features.CreateProduct;
 

@@ -1,4 +1,5 @@
-﻿using EShopModulithCourse.Server.Shared.Providers;
+﻿using Shared.Contracts.DDD;
+using Shared.Providers;
 
 namespace Modules.Basket.Basket.Models;
 

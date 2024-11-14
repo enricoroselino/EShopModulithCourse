@@ -1,5 +1,5 @@
-﻿using EShopModulithCourse.Server.Shared.CQRS;
-using Modules.Catalog.Contract.Products.Dtos;
+﻿using Modules.Catalog.Contract.Products.Dtos;
+using Shared.Contracts.CQRS;
 
 namespace Modules.Catalog.Contract.Products.Features.GetProductById;
 

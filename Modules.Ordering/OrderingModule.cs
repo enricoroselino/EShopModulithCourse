@@ -1,6 +1,6 @@
-﻿using EShopModulithCourse.Server.Shared.Extensions;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
+using Shared.Extensions;
 
 namespace Modules.Ordering;
 

@@ -1,36 +1,31 @@
 using Carter;
 using DotNetEnv;
-using EShopModulithCourse.Server.Configurations;
-using EShopModulithCourse.Server.Shared.Exceptions;
-using EShopModulithCourse.Server.Shared.Extensions;
-using EShopModulithCourse.Server.Shared.Interceptors;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Modules.Basket;
 using Modules.Catalog;
 using Modules.Ordering;
+using Shared;
+using Shared.Data;
+using Shared.Data.Interceptors;
+using Shared.Exceptions;
+using Shared.Extensions;
 
 Env.Load(".env");
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
-builder.Services.AddSerilogConfig();
 builder.Services
-    .AddCors()
-    .AddProblemDetails()
-    .AddExceptionHandler<GlobalExceptionHandler>();
+    .AddEndpointsApiExplorer()
+    .AddSwaggerGen();
+
+builder.Services
+    .AddSharedConfiguration();
 
 builder.Services
     .AddBasketModule()
     .AddCatalogModule()
     .AddOrderingModule();
-
-builder.Services
-    .AddScoped<ISaveChangesInterceptor, AuditableEntityInterceptor>()
-    .AddScoped<ISaveChangesInterceptor, DispatchDomainEventsInterceptor>();
 
 var app = builder.Build();
 
@@ -47,10 +42,6 @@ app
     .UseOrderingModule();
 
 await app.SeedDatabaseAsync();
-
-app
-    .UseCors(policyBuilder => policyBuilder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader())
-    .UseExceptionHandler(cfg => { });
 
 app.UseHttpsRedirection();
 app.MapCarter();

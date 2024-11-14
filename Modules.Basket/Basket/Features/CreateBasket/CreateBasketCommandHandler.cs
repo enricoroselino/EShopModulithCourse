@@ -1,8 +1,8 @@
-﻿using EShopModulithCourse.Server.Shared.CQRS;
-using FluentValidation;
+﻿using FluentValidation;
 using Modules.Basket.Basket.Dtos;
 using Modules.Basket.Basket.Models;
 using Modules.Basket.Data;
+using Shared.Contracts.CQRS;
 
 namespace Modules.Basket.Basket.Features.CreateBasket;
 

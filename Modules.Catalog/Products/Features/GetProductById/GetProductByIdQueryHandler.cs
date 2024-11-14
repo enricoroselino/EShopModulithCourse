@@ -1,10 +1,9 @@
-﻿using EShopModulithCourse.Server.Shared.CQRS;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Modules.Catalog.Contract.Products.Dtos;
 using Modules.Catalog.Contract.Products.Features.GetProductById;
 using Modules.Catalog.Data;
-using Modules.Catalog.Products.Dtos;
 using Modules.Catalog.Products.Exceptions;
+using Shared.Contracts.CQRS;
 
 namespace Modules.Catalog.Products.Features.GetProductById;
 

@@ -10,7 +10,8 @@ public class ShoppingCartItemConfiguration : IEntityTypeConfiguration<ShoppingCa
     {
         builder.HasKey(e => e.Id);
         
-        builder.Property(c => c.Id).ValueGeneratedNever();
+        builder.Property(c => c.Id)
+            .ValueGeneratedNever();
 
         builder.Property(e => e.ProductId)
             .IsRequired();

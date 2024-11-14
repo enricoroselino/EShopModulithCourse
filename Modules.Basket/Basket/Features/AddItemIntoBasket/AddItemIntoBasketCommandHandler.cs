@@ -1,11 +1,10 @@
-﻿using EShopModulithCourse.Server.Shared.CQRS;
-using FluentValidation;
+﻿using FluentValidation;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using Modules.Basket.Basket.Dtos;
 using Modules.Basket.Basket.Exceptions;
 using Modules.Basket.Data;
 using Modules.Catalog.Contract.Products.Features.GetProductById;
+using Shared.Contracts.CQRS;
 
 namespace Modules.Basket.Basket.Features.AddItemIntoBasket;
 

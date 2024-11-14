@@ -1,10 +1,10 @@
 ﻿using Carter;
-using EShopModulithCourse.Server.Shared;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
 using Modules.Catalog.Contract.Products.Dtos;
+using Shared;
 
 namespace Modules.Catalog.Products.Features.GetProducts;
 
