@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Shared.Verdict;
+namespace Shared.Contracts.Verdict;
 
 public static class VerdictExtensions
 {

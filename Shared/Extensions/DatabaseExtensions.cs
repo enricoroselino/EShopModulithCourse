@@ -1,8 +1,4 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-
-namespace Shared.Data;
+﻿namespace Shared.Extensions;
 
 public static class DatabaseExtensions
 {

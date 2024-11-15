@@ -1,11 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Shared.Contracts.DDD;
+using Shared.Infrastructure.Extensions;
 
-namespace Shared.Data.Interceptors;
+namespace Shared.Infrastructure.Interceptors;
 
-internal class AuditableEntityInterceptor : SaveChangesInterceptor
+public class AuditableEntityInterceptor : SaveChangesInterceptor
 {
     public override InterceptionResult<int> SavingChanges(DbContextEventData eventData, InterceptionResult<int> result)
     {
@@ -37,13 +37,4 @@ internal class AuditableEntityInterceptor : SaveChangesInterceptor
                 x.Entity.ModifiedAt = DateTime.Now;
         });
     }
-}
-
-internal static class EntityExtensions
-{
-    public static bool HasChangedOwnedEntities(this EntityEntry entry) =>
-        entry.References.Any(r =>
-            r.TargetEntry is not null &&
-            r.TargetEntry.Metadata.IsOwned() &&
-            r.TargetEntry.State is EntityState.Added or EntityState.Modified);
 }

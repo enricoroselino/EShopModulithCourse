@@ -9,21 +9,27 @@
     <ItemGroup>
       <PackageReference Include="AutoBogus" Version="2.13.1" />
       <PackageReference Include="Carter" Version="8.2.1" />
-      <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.10.0" />
-      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.0" />
-      <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="9.0.0" />
-      <PackageReference Include="Serilog.AspNetCore" Version="8.0.3" />
-      <PackageReference Include="Serilog.Enrichers.CorrelationId" Version="3.0.1" />
-      <PackageReference Include="Serilog.Enrichers.Environment" Version="3.0.1" />
-      <PackageReference Include="UUIDNext" Version="3.0.0" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\Shared.Contracts\Shared.Contracts.csproj" />
+      <ProjectReference Include="..\Shared.Infrastructure\Shared.Infrastructure.csproj" />
     </ItemGroup>
 
     <ItemGroup>
         <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Remove="Shared.Infrastructure\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="Shared.Infrastructure\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Shared.Infrastructure\**" />
     </ItemGroup>
 
 </Project>

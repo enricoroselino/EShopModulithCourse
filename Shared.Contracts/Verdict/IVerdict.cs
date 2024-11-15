@@ -1,4 +1,4 @@
-﻿namespace Shared.Verdict;
+﻿namespace Shared.Contracts.Verdict;
 
 public interface IVerdict
 {

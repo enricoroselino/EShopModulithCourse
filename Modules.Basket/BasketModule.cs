@@ -2,7 +2,6 @@
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.DependencyInjection;
 using Modules.Basket.Data;
-using Shared.Data;
 using Shared.Extensions;
 
 namespace Modules.Basket;
@@ -14,6 +13,7 @@ public static class BasketModule
         var assembly = typeof(BasketModule).Assembly;
         services.AddMediatorFromAssemblies(assembly);
         services.AddCarterFromAssemblies(assembly);
+        services.AddQuartzFromAssemblies(assembly);
         
         services.AddDbContext<BasketDbContext>((sp, options) =>
         {

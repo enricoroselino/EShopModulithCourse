@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Modules.Catalog.Data.Seeders.Fakers;
-using Shared.Data;
+using Shared.Interfaces;
 
 namespace Modules.Catalog.Data.Seeders;
 

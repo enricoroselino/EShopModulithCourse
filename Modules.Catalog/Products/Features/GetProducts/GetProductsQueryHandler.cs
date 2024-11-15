@@ -3,6 +3,7 @@ using Modules.Catalog.Contract.Products.Dtos;
 using Modules.Catalog.Data;
 using Shared;
 using Shared.Contracts.CQRS;
+using Shared.Models;
 
 namespace Modules.Catalog.Products.Features.GetProducts;
 

@@ -3,8 +3,8 @@ using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.DependencyInjection;
 using Modules.Catalog.Data;
 using Modules.Catalog.Data.Seeders;
-using Shared.Data;
 using Shared.Extensions;
+using Shared.Interfaces;
 
 namespace Modules.Catalog;
 

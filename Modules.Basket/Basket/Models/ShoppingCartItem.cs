@@ -1,5 +1,4 @@
 ﻿using Shared.Contracts.DDD;
-using Shared.Providers;
 
 namespace Modules.Basket.Basket.Models;
 

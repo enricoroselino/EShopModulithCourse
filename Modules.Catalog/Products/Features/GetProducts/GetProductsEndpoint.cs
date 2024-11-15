@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
 using Modules.Catalog.Contract.Products.Dtos;
 using Shared;
+using Shared.Models;
 
 namespace Modules.Catalog.Products.Features.GetProducts;
 

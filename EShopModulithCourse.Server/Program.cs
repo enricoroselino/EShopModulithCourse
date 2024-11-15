@@ -1,14 +1,8 @@
-using Carter;
 using DotNetEnv;
-using Microsoft.EntityFrameworkCore.Diagnostics;
 using Modules.Basket;
 using Modules.Catalog;
 using Modules.Ordering;
 using Shared;
-using Shared.Data;
-using Shared.Data.Interceptors;
-using Shared.Exceptions;
-using Shared.Extensions;
 
 Env.Load(".env");
 var builder = WebApplication.CreateBuilder(args);
@@ -41,8 +35,7 @@ app
     .UseCatalogModule()
     .UseOrderingModule();
 
-await app.SeedDatabaseAsync();
-
 app.UseHttpsRedirection();
-app.MapCarter();
+app.UseSharedConfiguration();
+
 await app.RunAsync();

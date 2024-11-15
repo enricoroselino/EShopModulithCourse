@@ -1,5 +1,4 @@
-﻿using System.Security.Claims;
-using Carter;
+﻿using Carter;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;

@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Shared.Contracts.DDD;
 
-namespace Shared.Data.Interceptors;
+namespace Shared.Infrastructure.Interceptors;
 
-internal class DispatchDomainEventsInterceptor(IMediator mediator) : SaveChangesInterceptor
+public class DispatchDomainEventsInterceptor(IMediator mediator) : SaveChangesInterceptor
 {
     public override InterceptionResult<int> SavingChanges(DbContextEventData eventData, InterceptionResult<int> result)
     {
@@ -32,10 +32,9 @@ internal class DispatchDomainEventsInterceptor(IMediator mediator) : SaveChanges
             .ToList();
 
         var domainEvents = aggregates
-            .SelectMany(a => a.DomainEvents)
+            .Select(a => a.ClearDomainEvents())
             .ToList();
 
-        aggregates.ForEach(a => a.ClearDomainEvents());
         foreach (var domainEvent in domainEvents) await mediator.Publish(domainEvent);
     }
 }

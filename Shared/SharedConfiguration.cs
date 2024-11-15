@@ -1,18 +1,13 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.EntityFrameworkCore.Diagnostics;
-using Microsoft.Extensions.DependencyInjection;
-using Shared.Configurations;
-using Shared.Data.Interceptors;
-using Shared.Exceptions;
-using Shared.Providers;
-
-namespace Shared;
+﻿namespace Shared;
 
 public static class SharedConfiguration
 {
     public static IServiceCollection AddSharedConfiguration(this IServiceCollection services)
     {
-        services.AddSerilogConfig();
+        services
+            .AddSerilogConfig()
+            .AddQuartzConfiguration()
+            .AddEndpointConfiguration();
 
         services
             .AddCors()
@@ -24,17 +19,23 @@ public static class SharedConfiguration
             .AddScoped<ISaveChangesInterceptor, DispatchDomainEventsInterceptor>();
 
         services
-            .AddScoped<IUuidProvider, UuidProvider>();
+            .AddSingleton<IGuidProvider, GuidProvider>()
+            .AddSingleton<TimeProvider>(TimeProvider.System);
 
         return services;
     }
 
-    public static IApplicationBuilder UseSharedConfiguration(this IApplicationBuilder app)
+    public static WebApplication UseSharedConfiguration(this WebApplication app)
     {
         app
             .UseCors(policyBuilder => policyBuilder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader())
             .UseExceptionHandler(cfg => { });
 
+        app
+            .UseEndpointConfiguration()
+            .MapCarter();
+
+        Task.Run(async () => await app.SeedDatabaseAsync());
         return app;
     }
 }

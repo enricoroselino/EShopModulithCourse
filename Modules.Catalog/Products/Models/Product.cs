@@ -1,6 +1,5 @@
 ﻿using Modules.Catalog.Products.Events;
 using Shared.Contracts.DDD;
-using Shared.Providers;
 
 namespace Modules.Catalog.Products.Models;
 
@@ -24,7 +23,7 @@ public class Product : Aggregate<Guid>
 
         var product = new Product
         {
-            Id = UuidProvider.NewSequential(),
+            Id = Guid.NewGuid(),
             Name = name,
             Description = description,
             Categories = categories,

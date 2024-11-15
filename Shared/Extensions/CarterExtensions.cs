@@ -1,9 +1,4 @@
-﻿using System.Reflection;
-using Carter;
-using Microsoft.Extensions.DependencyInjection;
-using Shared.Providers;
-
-namespace Shared.Extensions;
+﻿namespace Shared.Extensions;
 
 public static class CarterExtensions
 {
@@ -15,7 +10,7 @@ public static class CarterExtensions
 
         void Configurator(CarterConfigurator cfg)
         {
-            var modules = AssembliesProvider.GetInterfaceTypes<ICarterModule>(assemblies);
+            var modules = AssembliesHelper.GetInterfaceTypes<ICarterModule>(assemblies);
             cfg.WithModules(modules);
         }
     }
