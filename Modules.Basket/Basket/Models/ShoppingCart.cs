@@ -20,7 +20,7 @@ public class ShoppingCart : Aggregate<Guid>
 
         var shoppingCart = new ShoppingCart
         {
-            Id = UuidProvider.NewSequential(),
+            Id = Guid.NewGuid(),
             UserName = userName,
         };
 

@@ -20,16 +20,16 @@ public class ShoppingCartItem : Entity<Guid>
     public string ProductName { get; private set; } = default!;
 
     internal static ShoppingCartItem Create(
-        Guid shoppingCartId, 
-        Guid productId, 
-        int quantity, 
+        Guid shoppingCartId,
+        Guid productId,
+        int quantity,
         string color,
-        decimal price, 
+        decimal price,
         string productName)
     {
         var cartItem = new ShoppingCartItem
         {
-            Id = UuidProvider.NewSequential(),
+            Id = Guid.NewGuid(),
             ShoppingCartId = shoppingCartId,
             ProductId = productId,
             Color = color,

@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Shared.Configurations;
 using Shared.Data.Interceptors;
 using Shared.Exceptions;
+using Shared.Providers;
 
 namespace Shared;
 
@@ -21,6 +22,10 @@ public static class SharedConfiguration
         services
             .AddScoped<ISaveChangesInterceptor, AuditableEntityInterceptor>()
             .AddScoped<ISaveChangesInterceptor, DispatchDomainEventsInterceptor>();
+
+        services
+            .AddScoped<IUuidProvider, UuidProvider>();
+
         return services;
     }
 
