@@ -10,11 +10,7 @@ public static class QuartzExtensions
     {
         var jobOptions = AssembliesHelper.GetInterfaceTypes<IConfigureOptions<QuartzOptions>>(assemblies);
 
-        foreach (var option in jobOptions)
-        {
-            services.AddSingleton(typeof(IConfigureOptions<QuartzOptions>), option);
-        }
-
+        foreach (var option in jobOptions) services.AddSingleton(typeof(IConfigureOptions<QuartzOptions>), option);
         return services;
     }
 }

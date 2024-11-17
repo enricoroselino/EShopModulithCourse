@@ -13,4 +13,3 @@ global using Shared.Infrastructure.Behaviors;
 global using Shared.Infrastructure.Configurations;
 global using Shared.Infrastructure.Interceptors;
 global using Shared.Infrastructure.Providers;
-global using Shared.Infrastructure.Providers.Interfaces;
