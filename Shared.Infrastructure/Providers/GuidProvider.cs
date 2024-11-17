@@ -1,6 +1,4 @@
-﻿using UUIDNext;
-
-namespace Shared.Infrastructure.Providers;
+﻿namespace Shared.Infrastructure.Providers;
 
 public interface IGuidProvider
 {

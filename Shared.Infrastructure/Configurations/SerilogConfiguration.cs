@@ -1,8 +1,3 @@
-using Microsoft.Extensions.DependencyInjection;
-using Serilog;
-using Serilog.Events;
-using Serilog.Filters;
-
 namespace Shared.Infrastructure.Configurations;
 
 public static class SerilogConfiguration
@@ -26,7 +21,7 @@ public static class SerilogConfiguration
 
         loggerConfiguration
             .WriteTo.Console();
-            //.WriteTo.Seq("");
+        //.WriteTo.Seq("");
 
         Log.Logger = loggerConfiguration.CreateLogger();
         services.AddSerilog(Log.Logger);

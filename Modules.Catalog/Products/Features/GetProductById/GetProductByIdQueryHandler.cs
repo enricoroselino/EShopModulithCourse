@@ -7,7 +7,7 @@ using Shared.Contracts.CQRS;
 
 namespace Modules.Catalog.Products.Features.GetProductById;
 
-public class GetProductByIdQueryHandler : IQueryHandler<GetProductByIdQuery, GetProductByIdResult>
+internal class GetProductByIdQueryHandler : IQueryHandler<GetProductByIdQuery, GetProductByIdResult>
 {
     private readonly CatalogDbContext _catalogDbContext;
 

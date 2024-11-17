@@ -2,6 +2,7 @@ using DotNetEnv;
 using Modules.Basket;
 using Modules.Catalog;
 using Modules.Ordering;
+using Modules.Shared;
 using Shared;
 
 Env.Load(".env");
@@ -14,12 +15,8 @@ builder.Services
     .AddSwaggerGen();
 
 builder.Services
+    .AddModulesConfiguration()
     .AddSharedConfiguration();
-
-builder.Services
-    .AddBasketModule()
-    .AddCatalogModule()
-    .AddOrderingModule();
 
 var app = builder.Build();
 
@@ -30,12 +27,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app
-    .UseBasketModule()
-    .UseCatalogModule()
-    .UseOrderingModule();
-
 app.UseHttpsRedirection();
-app.UseSharedConfiguration();
 
+app.UseModulesConfigurations();
+app.UseSharedConfiguration();
 await app.RunAsync();

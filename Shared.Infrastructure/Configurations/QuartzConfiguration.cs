@@ -1,7 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Quartz;
-
-namespace Shared.Infrastructure.Configurations;
+﻿namespace Shared.Infrastructure.Configurations;
 
 public static class QuartzConfiguration
 {
@@ -9,7 +6,6 @@ public static class QuartzConfiguration
     {
         services.AddQuartz();
         services.AddQuartzHostedService(options => { options.WaitForJobsToComplete = false; });
-
         return services;
     }
 }

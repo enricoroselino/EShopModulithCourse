@@ -23,7 +23,7 @@ public class UpdateProductCommandValidator : AbstractValidator<UpdateProductComm
     }
 }
 
-public record UpdateProductCommandHandler : ICommandHandler<UpdateProductCommand, UpdateProductResult>
+internal record UpdateProductCommandHandler : ICommandHandler<UpdateProductCommand, UpdateProductResult>
 {
     private readonly CatalogDbContext _catalogDbContext;
 

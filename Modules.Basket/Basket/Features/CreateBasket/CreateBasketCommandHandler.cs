@@ -19,7 +19,7 @@ public class CreateBasketCommandValidator : AbstractValidator<CreateBasketComman
     }
 }
 
-public class CreateBasketCommandHandler : ICommandHandler<CreateBasketCommand, CreateBasketResult>
+internal class CreateBasketCommandHandler : ICommandHandler<CreateBasketCommand, CreateBasketResult>
 {
     private readonly BasketDbContext _basketDbContext;
 

@@ -1,8 +1,4 @@
-﻿using System.Diagnostics;
-using MediatR;
-using Microsoft.Extensions.Logging;
-
-namespace Shared.Infrastructure.Behaviors;
+﻿namespace Shared.Infrastructure.Behaviors;
 
 public class LoggingBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
     where TRequest : notnull

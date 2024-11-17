@@ -1,9 +1,4 @@
-﻿using MediatR;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Diagnostics;
-using Shared.Contracts.DDD;
-
-namespace Shared.Infrastructure.Interceptors;
+﻿namespace Shared.Infrastructure.Interceptors;
 
 public class DispatchDomainEventsInterceptor(IMediator mediator) : SaveChangesInterceptor
 {
@@ -32,7 +27,7 @@ public class DispatchDomainEventsInterceptor(IMediator mediator) : SaveChangesIn
             .ToList();
 
         var domainEvents = aggregates
-            .Select(a => a.ClearDomainEvents())
+            .SelectMany(a => a.ClearDomainEvents())
             .ToList();
 
         foreach (var domainEvent in domainEvents) await mediator.Publish(domainEvent);

@@ -9,8 +9,10 @@ public static class OrderingModule
     public static IServiceCollection AddOrderingModule(this IServiceCollection services)
     {
         var assembly = typeof(OrderingModule).Assembly;
-        services.AddMediatorFromAssemblies(assembly);
-        services.AddCarterFromAssemblies(assembly);
+        services
+            .AddMediatorFromAssemblies(assembly)
+            .AddCarterFromAssemblies(assembly);
+        
         return services;
     }
 

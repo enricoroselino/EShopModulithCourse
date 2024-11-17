@@ -1,9 +1,4 @@
-﻿using Asp.Versioning;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Routing;
-using Microsoft.Extensions.DependencyInjection;
-
-namespace Shared.Infrastructure.Configurations;
+﻿namespace Shared.Infrastructure.Configurations;
 
 public static class EndpointConfiguration
 {

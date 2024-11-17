@@ -1,9 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Diagnostics;
-using Shared.Contracts.DDD;
-using Shared.Infrastructure.Extensions;
-
-namespace Shared.Infrastructure.Interceptors;
+﻿namespace Shared.Infrastructure.Interceptors;
 
 public class AuditableEntityInterceptor : SaveChangesInterceptor
 {

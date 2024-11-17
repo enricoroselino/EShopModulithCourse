@@ -10,7 +10,7 @@ public record GetProductsQuery(PaginationRequest Request) : IQuery<GetProductsRe
 
 public record GetProductsResult(PaginatedResult<ProductDto> Products);
 
-public class GetProductsQueryHandler : IQueryHandler<GetProductsQuery, GetProductsResult>
+internal class GetProductsQueryHandler : IQueryHandler<GetProductsQuery, GetProductsResult>
 {
     private readonly CatalogDbContext _catalogDbContext;
 

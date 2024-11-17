@@ -12,6 +12,7 @@
 
     <ItemGroup>
         <ProjectReference Include="..\Modules.Catalog.Contract\Modules.Catalog.Contract.csproj"/>
+        <ProjectReference Include="..\Modules.Integration\Modules.Integration.csproj" />
         <ProjectReference Include="..\Shared\Shared.csproj"/>
     </ItemGroup>
 

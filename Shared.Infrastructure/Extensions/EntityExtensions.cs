@@ -1,7 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
-
-namespace Shared.Infrastructure.Extensions;
+﻿namespace Shared.Infrastructure.Extensions;
 
 internal static class EntityExtensions
 {

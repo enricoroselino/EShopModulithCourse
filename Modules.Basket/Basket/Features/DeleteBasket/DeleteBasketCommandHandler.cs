@@ -18,7 +18,7 @@ public class DeleteBasketCommandValidator : AbstractValidator<DeleteBasketComman
     }
 }
 
-public class DeleteBasketCommandHandler : ICommandHandler<DeleteBasketCommand, DeleteBasketCommandResult>
+internal class DeleteBasketCommandHandler : ICommandHandler<DeleteBasketCommand, DeleteBasketCommandResult>
 {
     private readonly BasketDbContext _basketDbContext;
 

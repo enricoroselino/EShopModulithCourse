@@ -26,7 +26,7 @@ public class AddItemIntoBasketValidator : AbstractValidator<AddItemIntoBasketCom
     }
 }
 
-public class AddItemIntoBasketCommandHandler : ICommandHandler<AddItemIntoBasketCommand, AddItemIntoBasketResult>
+internal class AddItemIntoBasketCommandHandler : ICommandHandler<AddItemIntoBasketCommand, AddItemIntoBasketResult>
 {
     private readonly BasketDbContext _basketDbContext;
     private readonly ISender _mediator;

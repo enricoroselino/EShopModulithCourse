@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Modules.Catalog.Data;
 using Modules.Catalog.Data.Seeders;
 using Shared.Extensions;
+using Shared.Infrastructure.Messaging;
 using Shared.Interfaces;
 
 namespace Modules.Catalog;
@@ -12,10 +13,6 @@ public static class CatalogModule
 {
     public static IServiceCollection AddCatalogModule(this IServiceCollection services)
     {
-        var assembly = typeof(CatalogModule).Assembly;
-        services.AddMediatorFromAssemblies(assembly);
-        services.AddCarterFromAssemblies(assembly);
-
         services.AddDbContext<CatalogDbContext>((sp, options) =>
         {
             var interceptors = sp.GetServices<ISaveChangesInterceptor>();

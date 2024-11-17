@@ -1,6 +1,4 @@
-﻿using System.Reflection;
-
-namespace Shared.Infrastructure;
+﻿namespace Shared.Infrastructure;
 
 public static class AssembliesHelper
 {
